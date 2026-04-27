@@ -60,9 +60,11 @@ out/
 hs_err_pid*
 replay_pid*
 
-docs/
 .DS_Store
 application-local.yml
 
 # Java 빌드 폴더
 /target/
+
+# QueryDSL generated sources
+src/main/generated/
