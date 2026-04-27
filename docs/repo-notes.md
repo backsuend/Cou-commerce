@@ -45,40 +45,49 @@ ELK / Prometheus / Grafana 관련 추가 작업이 남아 있을 가능성이 �
 - 다만 develop보다 뒤처진 커밋도 있어 최종 기준으로 삼기는 어려움
 - 운영 관측성 관련 보조 참고 브랜치로만 사용
 
-## 3. 레포 관리 메모
+## 3. 이슈 정리 상태
+
+포트폴리오 관점에서 실제 구현과 이슈 내용이 어긋나 보일 수 있는 항목은 기존 이슈 본문을 수정해 정리했습니다.
+
+정리한 이슈:
+
+- `#70` 로깅/모니터링 구현 범위 정리 및 close
+- `#69` 주문 생성 파이프라인 개선 범위와 고도화 보류 항목 분리
+- `#65` Cart Buyer API v1 정책 정리
+- `#53` Order/Payment 테스트 근거를 단위 테스트 + APIdog/Swagger 검증 중심으로 정리
+- `#68` Order/Payment 2차 개발 완료 범위와 운영 고도화 항목 분리
+
+## 4. 레포 관리 메모
 
 이 프로젝트는 메인 서비스 운영 레포라기보다, 백엔드 개발 생애주기와 협업 경험을 보여주는 포트폴리오 성격이 강합니다. 따라서 레포 정리는 과도하게 깊게 하기보다, 채용자가 빠르게 이해할 수 있는 수준의 문서 보강이 우선입니다.
 
-## 4. 정리하면 좋은 항목
+## 5. 정리한 항목
 
 ### README 보강
 
-현재 README는 프로젝트 설명이 충분하지 않으므로 다음 항목을 추가하면 좋습니다.
+`docs/cou-commerce-portfolio` 브랜치에서 README를 포트폴리오용으로 보강했습니다.
+
+추가한 내용:
 
 ```text
 - 프로젝트 개요
 - 주요 기능
 - 기술 스택
-- 실행 방법
-- 인프라 실행 방법
-- 테스트 실행 방법
+- 로컬 실행 개요
 - CI 설명
-- 모니터링 실행 방법
-- 개인 기여 문서 링크
+- 포트폴리오 문서 링크
+- 브랜치 기준 메모
 ```
 
-### 업로드 파일 정리
+### 업로드 파일 메모
 
-`src/main/resources/static/uploads/products/` 하위에 실제 업로드 결과물 성격의 이미지 파일이 포함되어 있습니다.
+`src/main/resources/static/uploads/products/` 하위 업로드 이미지는 협업 과정에서 테스트용으로 사용한 자산입니다.
 
-포트폴리오용 프로젝트라 큰 문제로 보지 않더라도, 레포를 깔끔하게 보이게 하려면 다음을 고려할 수 있습니다.
+따라서 이번 포트폴리오 브랜치에서는 삭제하지 않습니다.
 
-```text
-- 업로드 결과물은 .gitignore 처리
-- 샘플 이미지는 docs/sample-assets 또는 seed 전용 경로로 분리
-```
+운영 프로젝트라면 S3/MinIO/object storage 등으로 분리하는 것이 맞지만, 현재 레포에서는 학습/협업 검증용 테스트 자산으로 유지합니다.
 
-### Generated QClass 정리
+### Generated QClass 정리 방향
 
 QueryDSL generated QClass가 커밋되어 있습니다.
 
@@ -87,6 +96,7 @@ QueryDSL generated QClass가 커밋되어 있습니다.
 ```text
 - src/main/generated/를 .gitignore 처리
 - Gradle build 시 QClass가 생성되도록 유지
+- 포트폴리오 브랜치에서는 필요 시 generated 파일 제거 가능
 ```
 
 ### 빈 테스트 파일 확인
@@ -115,7 +125,7 @@ Prometheus/Grafana 실행 설정은 있으나, Grafana dashboard JSON이나 캡�
 - 가능하다면 dashboard export JSON 추가
 ```
 
-## 5. 민감 정보 메모
+## 6. 민감 정보 메모
 
 이 프로젝트에는 포트폴리오/학습용 프로젝트라는 맥락에서 설정 파일에 테스트용 값이 남아 있습니다.
 
@@ -129,12 +139,13 @@ Prometheus/Grafana 실행 설정은 있으나, Grafana dashboard JSON이나 캡�
 
 현재 포트폴리오 설명에서는 이 부분을 과하게 강조하지 않고, 운영 프로젝트로 전환할 때 개선해야 할 항목 정도로만 관리합니다.
 
-## 6. 추천 우선순위
+## 7. 추천 우선순위
 
 ```text
-1. README.md 보강
-2. PORTFOLIO.md 링크 추가
-3. docs/monitoring.md 작성
-4. static uploads / generated QClass / 빈 테스트 파일 정리 여부 결정
-5. application example 파일 분리 여부 결정
+1. README.md 보강 완료
+2. PORTFOLIO.md 추가 완료
+3. 기존 이슈 상태 정리 완료
+4. docs/monitoring.md 작성 검토
+5. generated QClass / 빈 테스트 파일 정리 여부 결정
+6. application example 파일 분리 여부 결정
 ```
