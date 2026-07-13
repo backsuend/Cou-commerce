@@ -2,13 +2,13 @@ name: cou-commerce-mysql
 
 services:
   mysql:
-    image: mysql:8.4        # LTS(장기지원) 라인 권장
-    container_name: mysql   # 공유 네트워크에서 호스트명으로 사용 (개발 편의)
+    image: mysql:8.4
+    container_name: mysql
     environment:
       MYSQL_DATABASE: ${MYSQL_DATABASE:-coucommercedb}
       MYSQL_USER: ${MYSQL_USER:-app}
-      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-app-secret}
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root-secret}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:?Set MYSQL_PASSWORD in infra/mysql/.env}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:?Set MYSQL_ROOT_PASSWORD in infra/mysql/.env}
       TZ: Asia/Seoul
     command:
       - --character-set-server=utf8mb4
