@@ -16,11 +16,6 @@ spring:
     hibernate:
       ddl-auto: update
 
-  security:
-    user:
-      name: admin
-      password: password
-
   jackson:
     deserialization:
       fail-on-unknown-properties: true
